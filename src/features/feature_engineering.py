@@ -8,7 +8,7 @@ def create_features(df):
     return df
 
 raw_data_path = 'data/raw'
-processed_data_path = 'data/processed'
+processed_data_path = "../data/processed_cleaned"
 os.makedirs(processed_data_path, exist_ok=True)
 
 for file in os.listdir(raw_data_path):

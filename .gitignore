@@ -10,3 +10,6 @@ __pycache__/
 data/raw/
 data/processed/
 data/processed_cleaned/
+
+# trained models
+models/trained_model/
