@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Stock Price Predictor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Stock Price Predictor</h1>
+        <form method="POST" action="/predict">
+            <label for="ticker">Ticker:</label>
+            <select name="ticker" id="ticker">
+                <option value="AAPL">Apple (AAPL)</option>
+                <option value="AMZN">Amazon (AMZN)</option>
+                <option value="GOOGL">Google (GOOGL)</option>
+                <option value="MSFT">Microsoft (MSFT)</option>
+                <option value="TSLA">TESLA (TESLA)</option>
+            </select>
+            <br>
+            <label for="ma20">MA20:</label>
+            <input type="text" id="ma20" name="ma20">
+            <br>
+            <label for="ma50">MA50:</label>
+            <input type="text" id="ma50" name="ma50">
+            <br>
+            <label for="ma200">MA200:</label>
+            <input type="text" id="ma200" name="ma200">
+            <br>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <h2>Predicted Stock Price: {{ prediction }}</h2>
+        {% endif %}
+    </body>
+</html>
