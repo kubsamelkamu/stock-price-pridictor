@@ -1,35 +1,74 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Stock Price Predictor</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stock Price Predictor</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h1>Stock Price Predictor</h1>
-        <form method="POST" action="/predict">
-            <label for="ticker">Ticker:</label>
-            <select name="ticker" id="ticker">
-                <option value="AAPL">Apple (AAPL)</option>
-                <option value="AMZN">Amazon (AMZN)</option>
-                <option value="GOOGL">Google (GOOGL)</option>
-                <option value="MSFT">Microsoft (MSFT)</option>
-                <option value="TSLA">TESLA (TESLA)</option>
-            </select>
-            <br>
-            <label for="ma20">MA20:</label>
-            <input type="text" id="ma20" name="ma20">
-            <br>
-            <label for="ma50">MA50:</label>
-            <input type="text" id="ma50" name="ma50">
-            <br>
-            <label for="ma200">MA200:</label>
-            <input type="text" id="ma200" name="ma200">
-            <br>
-            <button type="submit">Predict</button>
-        </form>
-        {% if prediction %}
-            <h2>Predicted Stock Price: {{ prediction }}</h2>
-        {% endif %}
+        <div class="container mt-5">
+            <div class="card main-card">
+                <div class="card-header text-center">
+                    <h1>Stock Price Predictor</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/predict">
+                        <div class="form-group">
+                            <label for="ticker">Ticker:</label>
+                            <select class="form-control" name="ticker" id="ticker">
+                                <option value="AAPL">Apple (AAPL)</option>
+                                <option value="MSFT">Amazon (AMZN)</option>
+                                <option value="GOOGL">Google (GOOGL)</option>
+                                <option value="AMZN">Microsoft (MSFT)</option>
+                                <option value="TSLA">Tesla (TSLA)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ma20">MA20:</label>
+                            <input type="text" class="form-control" id="ma20" name="ma20" placeholder="Enter 20-day moving average">
+                            <div class="card mt-2 info-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">20-day Moving Average (MA20)</h5>
+                                    <p class="card-text">The average closing price of the stock over the past 20 trading days. This helps to smooth out short-term fluctuations and highlight longer-term trends.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ma50">MA50:</label>
+                            <input type="text" class="form-control" id="ma50" name="ma50" placeholder="Enter 50-day moving average">
+                            <div class="card mt-2 info-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">50-day Moving Average (MA50)</h5>
+                                    <p class="card-text">The average closing price of the stock over the past 50 trading days. It is often used to identify medium-term trends in the stock's price.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ma200">MA200:</label>
+                            <input type="text" class="form-control" id="ma200" name="ma200" placeholder="Enter 200-day moving average">
+                            <div class="card mt-2 info-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">200-day Moving Average (MA200)</h5>
+                                    <p class="card-text">The average closing price of the stock over the past 200 trading days. It is used to identify long-term trends and is a strong indicator of the overall market direction for the stock.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Predict</button>
+                    </form>
+                    {% if prediction %}
+                        <div class="alert alert-success mt-4" role="alert">
+                            <h4 class="alert-heading">Predicted Stock Price</h4>
+                            <p>{{ prediction }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
