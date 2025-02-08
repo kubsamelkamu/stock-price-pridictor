@@ -4,4 +4,5 @@ scikit-learn
 yfinance
 flask
 notebook
-
+matplotlib
+seaborn 

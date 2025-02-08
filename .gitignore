@@ -12,4 +12,4 @@ data/processed/
 data/processed_cleaned/
 
 # trained models
-models/trained_model/
+models/trained_models/
