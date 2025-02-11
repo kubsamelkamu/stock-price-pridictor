@@ -1,5 +1,5 @@
 # Stock price pridictor
-This project predicts stock prices using machine learning models. 
+This project predicts stock prices using machine learning models. The application is built with Flask and uses historical stock data for training. The UI is designed to be user-friendly and interactive, providing insights into the input features used for predictions.
 
 ## setup
 1.clone the repository:
@@ -9,7 +9,7 @@ This project predicts stock prices using machine learning models.
 2.Create and Activate Virtual enviroment:
 ```bash
     python -m venv venv
-    source venv/Scripts/activate  
+    venv\Scripts\activate
 ```
 3.Install dependencies:
 ```bash
