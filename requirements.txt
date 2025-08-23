@@ -6,4 +6,5 @@ yfinance>=0.2.27
 matplotlib>=3.8.1
 seaborn>=0.12.3
 notebook
-gunicorn
+waitress
+
