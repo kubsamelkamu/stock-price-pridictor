@@ -11,8 +11,7 @@ except ImportError:
 app = Flask(__name__)
 
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_DIR = os.path.join(PROJECT_ROOT, "trained_model")
+MODEL_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../trained_model'))
 
 
 best_models = {
