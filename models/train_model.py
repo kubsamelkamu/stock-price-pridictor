@@ -9,7 +9,14 @@ import pickle
 
 processed_data_path = '../data/processed_cleaned'
 tickers = ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'AMZN']
-data = {ticker: pd.read_csv(f'{processed_data_path}/{'featured_engineered_'+ticker}.csv', index_col='Date', parse_dates=True) for ticker in tickers}
+
+data = {
+    ticker: pd.read_csv(
+        f"{processed_data_path}/featured_engineered_{ticker}.csv",
+        index_col='Date', parse_dates=True
+    ) 
+    for ticker in tickers
+}
 
 def train_and_save_models(ticker, X_train, y_train):
     models = {}
@@ -25,20 +32,23 @@ def train_and_save_models(ticker, X_train, y_train):
     rf_model = RandomForestRegressor()
     rf_model.fit(X_train, y_train)
     models[f'{ticker}_rf'] = rf_model
-
-    # Save models
-    os.makedirs('trained_model', exist_ok=True)
     
+    os.makedirs('trained_model', exist_ok=True)
     for model_name, model in models.items():
         with open(f'trained_model/{model_name}.pkl', 'wb') as f:
             pickle.dump(model, f)
 
-# Train models for each ticker
 for ticker in tickers:
     df = data[ticker]
+
+    df = df.dropna()
+
     X = df[['MA20', 'MA50', 'MA200']]
     y = df['Close']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    train_and_save_models(ticker, X_train, y_train)
 
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+
+    train_and_save_models(ticker, X_train, y_train)
     print(f'Trained and saved models for {ticker}')

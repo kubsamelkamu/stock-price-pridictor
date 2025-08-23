@@ -1,8 +1,9 @@
-pandas
-numpy
-scikit-learn
-yfinance
-flask
+Flask>=2.3.2
+pandas>=2.1.0
+numpy>=1.26.0
+scikit-learn>=1.3.0
+yfinance>=0.2.27
+matplotlib>=3.8.1
+seaborn>=0.12.3
+waitress>=2.2.1
 notebook
-matplotlib
-seaborn 
